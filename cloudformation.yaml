@@ -1,0 +1,9 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: "Joseph's Stack"
+
+Resources: 
+  JosephShepinS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties: 
+      AccessControl: Private
+      BucketName: josephs3nysdfbucketnewname
