@@ -11,8 +11,24 @@ Resources:
   JosephShepinS3Bucket:
     Type: AWS::S3::Bucket
     Properties: 
-      AccessControl: Public
+      AccessControl: PublicRead
       BucketName:
         Ref: S3BucketName
-  
-      
+  JosephShepinS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref JosephShepinS3Bucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicRead
+            Effect: Allow
+            Principal: '*'
+            Action:
+              - 's3:GetObject'
+              - 's3:GetObjectVersion'
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref JosephShepinS3Bucket
+                - /*
