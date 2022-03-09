@@ -1,9 +1,18 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: "Joseph's Stack"
 
+Parameters:
+  S3BucketName:
+    Type: String
+    Description: "Name of the newly created S3 Bucket"
+
+  
 Resources: 
   JosephShepinS3Bucket:
     Type: AWS::S3::Bucket
     Properties: 
-      AccessControl: Private
-      BucketName: newbucketname56345243
+      AccessControl: Public
+      BucketName:
+        Ref: S3BucketName
+  
+      
